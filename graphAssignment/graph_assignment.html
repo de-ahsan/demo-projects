@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+    <script>
+      var trace = {
+        type: "bar",
+      };
+
+      function drawGraph(e) {
+        let x = document.getElementById("X").value.split(",");
+        let y = document.getElementById("Y").value.split(",");
+
+        if (x.length !== y.length)
+          return alert("No. of values of X-Axis and Y-Axis should be equal");
+
+        trace.x = x;
+        trace.y = y;
+
+        let data = [trace];
+        Plotly.newPlot("myDiv", data);
+      }
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <label>X Axis</label>
+      <input id="X" />
+      <label>Y Axis</label>
+      <input id="Y" />
+      <button onclick="drawGraph()">Draw Graph</button>
+    </div>
+    <div id="myDiv"></div>
+  </body>
+</html>
